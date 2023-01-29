@@ -4,6 +4,13 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <HelloWorld/>
-  <Gallery/>
+  <div class="wrapper">
+    <div class="select-image">
+      <HelloWorld/>
+    </div>
+    <div class="gallery">
+      <Gallery/>
+    </div>
+  </div>
+  
 </template>

@@ -1,31 +1,38 @@
 <script setup lang="ts">
-import { ref, defineComponent, Events } from 'vue'
 import axios from 'axios'
-import { get_image } from '../http-api'
-import Vue from "vue";
+import { Ref, ref } from 'vue'
+import { getImages } from '../http-api'
 
 
 const selectedImageId = ref(0)
-const file = ref<Blob | null>(null)
-const images = ref([])
+const file = ref()
+var images: Ref<Array<{id: number, name: string}>> = ref([]);
 
-axios({
-  method: 'get',
-  url: 'http://localhost:4000/images/',
-  responseType: 'json'
-})
-.then(res => {
-  images.value = res.data
-})
+getImages(images);
 
-function handleFileUpload(event){
-  file.value = new Blob([event.target.files[0]], { type: event.target.files[0].type });
+function download_image(ImageId: number, name : string){
+  axios({
+      method: 'get',
+      url: 'http://localhost:4000/images/'+ ImageId,
+      responseType: 'blob'
+    }).then(response => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', name);
+      document.body.appendChild(link);
+      link.click();
+    });
+}
+
+function handleFileUpload(event: any){
+  file.value = event.target.files[0]
 }
 
 function submitFile() {
   let formData = new FormData();
-  formData.append('file', file.value.value);
-  axios.post('/single-file', formData, {
+  formData.append('file', file.value);
+  axios.post('/images', formData, {
     headers: {'Content-Type': 'multipart/form-data'}
   })
   .then(function(){
@@ -34,67 +41,117 @@ function submitFile() {
   .catch(function(){
     console.log('FAILURE!!');
   });
+  window.location.reload();
 }
 
 </script>
 
 <template>
-    <div class="selecteur">
-    <h1 style="color: #646cff; text-align: center;">Selecteur d'images</h1>
-    <select class="common-class" v-model="selectedImageId">
-    <option v-for="image in images" :value="image.id">{{ image.name }}</option>
-  </select>
-  <button class="common-class" v-on:click="get_image(selectedImageId, images[selectedImageId].name)">Download</button>
-  </div>
-
-  <div class="image-container">
-    <img v-bind:src="'http://localhost:4000/images/' + selectedImageId" alt="image"> 
-  </div>
-
-  <div class="container">
-    <div class="large-12 medium-12 small-12 cell">
-      <label>File
-        <input type="file" id="file" ref="file" @change="handleFileUpload"/>
-      </label>
-      <button @click="submitFile">Submit</button>
+  <div class="wrapper-options">
+    <div class="wrapper-select">
+      <h1 class="title1">Choose an image</h1>
+      <div class="select-container">
+        <select class="selecteur" v-model="selectedImageId">
+          <option v-for="image in images" :value="image.id">{{ image.name }}</option>
+        </select>
+      </div>
+      
+      <div class="download-container">
+        <button v-on:click="download_image(selectedImageId, images[selectedImageId].name)">Download</button>
+      </div>
     </div>
+
+    <div class="wrapper-post">
+      <div class="choosefile-container">
+        <label class="btn-file">
+          <input class="input-file" type="file" id="file" ref="file" @change="handleFileUpload"/>
+        </label>
+      </div>
+      <div class="submit-container">
+        <button  class="sub-btn" @click="submitFile">Submit</button>
+      </div>
+    </div>
+    
+    <div class="wrapper-image">
+      <div class="img-ctr">
+        <img class="image-container" v-bind:src="'http://localhost:4000/images/' + selectedImageId" alt="image"> 
+      </div>
+    </div>
+
   </div>
+  
 </template>
 
 <style scoped>
-.selecteur {
-  text-align: center;
-  top : 40px;
+
+button{
+  width: 75%;
+  height: 50px;
+  border: 1px solid #E8EAED;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 1px 3px -2px #9098A9;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
 }
 
-.image-container {
-  margin-top: 20px;
+.title1 {
+    grid-area: Title1;
+    text-align: center;
+    color: white;
+    margin: 0px;
+    font-family: 'Montserrat';
+    padding-top: 40px;
+}
+
+.select-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selecteur {
+    grid-area: Select;
+    padding: 7px 40px 7px 12px;
+    width: 75%;
+    height: 50px;
+    border: 1px solid #E8EAED;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 1px 3px -2px #9098A9;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 150ms ease;
+}
+
+.img-ctr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 525px;
+}
+
+.img-ctr img {
+    max-width: 60%;
+    max-height: 400px;
+    backdrop-filter: blur(2px);
+}
+
+.download-container, .post-image {
   display: flex;
-  width: 100%;
+  align-items: center;
   justify-content: center;
 }
 
-.image-container img{
-  height: 500px;
-  object-fit: cover;
-  max-width:30%;
-  max-height:30%;
+.post-image label {
+  width: 100%;
 }
 
-.common-class  {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1em;
-  margin: 1em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.5s;
-  color: #646cff;
-}
-.common-class:hover {
-  border-color: #646cff;
-}
+
+
+
 
 </style>

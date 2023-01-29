@@ -52,7 +52,7 @@ public class ImageController {
     Optional<Image> img = imageDao.retrieve(id);
     if (img.isPresent()) {
       imageDao.delete(img.get());
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+      return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
   }
@@ -70,7 +70,7 @@ public class ImageController {
       String fileName = file.getOriginalFilename();
       Image img = new Image(fileName, fileContent);
       imageDao.create(img);
-      return new ResponseEntity<>(HttpStatus.CREATED);
+      return new ResponseEntity<>(HttpStatus.OK);
     }
     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
   }
