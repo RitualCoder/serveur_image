@@ -8,7 +8,7 @@ Vous aurez besoin de :
 - Vite.js
 - Maven (last version)
 - npm (last version)
-- Java 17.
+- Java 17
 
 Installation des modules dans le cas d'une machine Ubuntu :
 
@@ -40,11 +40,10 @@ sudo apt install openjdk-17-jdk openjdk-17-jre
 
 # Installer dernière version de Maven :
 # Aller sur le site officiel de maven afin de récuperer l'url de téléchargement adéquat à votre système d'exploitation.
-
-wget [VOTRE_URL
+wget [VOTRE_URL]
 
 # Décompresser le fichier :
-sudo tar -xf [LE_NOM_DU_FICHIER_COMPRESSE
+sudo tar -xf [LE_NOM_DU_FICHIER_COMPRESSE]
 
 # Configurer les variables d'environnement afin que Maven soit utilisable :
 sudo nano /etc/profile.d/maven.sh
@@ -57,25 +56,28 @@ export PATH=${M2_HOME}/bin:${PATH}
 source /etc/profile.d/maven.sh
 ```
 
+
 ## Préparation du serveur :
 
 Aller dans le sous dossier front-end afin de tout initialiser comme il faut : 
 
-```cd frontend/```
+```
+cd frontend/
 
-Taper la commande : 
+npm install
+```
 
-```npm install```
 
-##Lancement du serveur :
+## Lancement du serveur :
 
-#### Revener à la racine du projet et taper :
+```
+# Revenir à la racine du projet
+cd ..
 
-```mvn clean```
+mvn clean
 
-Puis : 
-
-```mvn clean install```
+mvn clean install
+```
 
 Si tout s'est bien passé vous pourrez lancer le serveur avec la commande suivante : 
 
