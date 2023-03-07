@@ -8,15 +8,15 @@ Dans le cas d'une machine Ubuntu :
 
 
 ### Mettre à jour votre système :
-``sudo apt update``
+`sudo apt update`
 
 ### Installer npm :
 
-```sudo apt install npm```
+`sudo apt install npm`
 
 ### Mettre à jour la version npm :
 
-```npm install -g npm@latest```
+`npm install -g npm@latest`
 
 ### Installer Node.js :
 
