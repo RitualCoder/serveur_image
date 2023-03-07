@@ -74,18 +74,19 @@ npm install
 # Revenir à la racine du projet
 cd ..
 
-mvn clean
-
+# Construire le projet
 mvn clean install
 ```
 
 Si tout s'est bien passé vous pourrez lancer le serveur avec la commande suivante : 
 
-```mvn --projects backend spring-boot:run```
+```
+mvn --projects backend spring-boot:run
+```
 
 Votre partie client devrez apparaitre à cette adresse :
 
-[https://localhost:8080](https://localhost:8080)
+[http://localhost:8080](http://localhost:8080)
 
 Si jamais l'adresse est pas bonne regarder le canal utlisé dans le terminal.
 
