@@ -17,7 +17,6 @@ Installation des modules dans le cas d'une machine Ubuntu :
 sudo apt update
 
 # Installer npm :
-
 sudo apt install npm
 
 # Mettre à jour la version npm :
@@ -49,7 +48,7 @@ sudo tar -xf [LE_NOM_DU_FICHIER_COMPRESSE]
 sudo nano /etc/profile.d/maven.sh
 
 # Et ajouter dedans (modifier ce qu'il y a entre crochet) :
-export M2_HOME=/opt/apache-maven-[VERSION_NUMBER
+export M2_HOME=/opt/apache-maven-[VERSION_NUMBER]
 export PATH=${M2_HOME}/bin:${PATH}
 
 # Recharger les variables d'environnement : 
