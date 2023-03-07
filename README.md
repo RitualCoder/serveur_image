@@ -8,10 +8,7 @@ Dans le cas d'une machine Ubuntu :
 
 
 ### Mettre à jour votre système :
-```sudo apt update
-rlgknreg
-rgedlghr
-regn```
+``sudo apt update``
 
 ### Installer npm :
 
