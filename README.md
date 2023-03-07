@@ -83,9 +83,9 @@ Si tout s'est bien passé vous pourrez lancer le serveur avec la commande suivan
 
 ```mvn --projects backend spring-boot:run```
 
-Rendez-vous sur votre navigateur en tapant l'adresse suivante : 
+Votre partie client devrez apparaitre à cette adresse :
 
-[https://localhost:8080](url du lien)
+[https://localhost:8080](https://localhost:8080)
 
 Si jamais l'adresse est pas bonne regarder le canal utlisé dans le terminal.
 
