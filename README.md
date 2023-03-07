@@ -7,62 +7,50 @@ You need, Node.js, Vue.js, Vite.js, Maven (last version), npm (last version), Ja
 Dans le cas d'une machine Ubuntu :
 
 
-### Mettre à jour votre système :
-`sudo apt update`
+```
+# Mettre à jour votre système :
+sudo apt update
 
-### Installer npm :
+# Installer npm :
 
-`sudo apt install npm`
+sudo apt install npm
 
-### Mettre à jour la version npm :
+# Mettre à jour la version npm :
+npm install -g npm@latest
 
-`npm install -g npm@latest`
+# Installer Node.js :
+npm install -g n
 
-### Installer Node.js :
+# Mettre à jour Node.js :
+sudo n stable
 
-```npm install -g n ```
+# Installer Vue.js :
+npm install vue
 
-### Mettre à jour Node.js :
+# Installer Vite.js :
+npm install -g vite
 
-```sudo n stable```
+# Installer Java 17 :
+sudo apt install openjdk-17-jdk openjdk-17-jre
 
-### Installer Vue.js :
+# Installer dernière version de Maven :
+# Aller sur le site officiel de maven afin de récuperer l'url de téléchargement adéquat à votre système d'exploitation.
 
-```npm install vue```
+wget [VOTRE_URL
 
-### Installer Vite.js :
+# Décompresser le fichier :
+sudo tar -xf [LE_NOM_DU_FICHIER_COMPRESSE
 
-```npm install -g vite```
+# Configurer les variables d'environnement afin que Maven soit utilisable :
+sudo nano /etc/profile.d/maven.sh
 
-### Installer Java 17 :
+# Et ajouter dedans (modifier ce qu'il y a entre crochet) :
+export M2_HOME=/opt/apache-maven-[VERSION_NUMBER
+export PATH=${M2_HOME}/bin:${PATH}
 
-```sudo apt install openjdk-17-jdk openjdk-17-jre```
-
-
-### Installer dernière version de Maven :
-
-Aller sur le site officiel de maven afin de récuperer l'url de téléchargement adéquat à votre système d'exploitation.
-
-#### Télécharger Maven :
-
-```wget [VOTRE_URL]```
-
-#### Décompresser le fichier :
-
-```sudo tar -xf [LE_NOM_DU_FICHIER_COMPRESSE]```
-
-#### Configurer les variables d'environnement afin que Maven soit utilisable :
-
-```sudo nano /etc/profile.d/maven.sh```
-
-#### Et ajouter dedans (modifier ce qu'il y a entre crochet) :
-
-```export M2_HOME=/opt/apache-maven-[VERSION_NUMBER]```
-```export PATH=${M2_HOME}/bin:${PATH}```
-
-#### Recharger les variables d'environnement : 
-
-```source /etc/profile.d/maven.sh```
+# Recharger les variables d'environnement : 
+source /etc/profile.d/maven.sh
+```
 
 ## Préparation du serveur :
 
