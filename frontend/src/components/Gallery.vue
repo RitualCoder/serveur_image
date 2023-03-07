@@ -13,7 +13,7 @@ getImages(images)
   <div class="wrapper-gallery">
     <h1 class="Title2">Image gallery</h1>
     <div class="image-container">
-        <img v-for="image in images" :key="image.id" v-bind:src="'http://localhost:4000/images/' + image.id" alt="image">
+        <img v-for="image in images" :key="image.id" v-bind:src="'http://localhost:8080/images/' + image.id" alt="image">
     </div>
   </div>
 </template>

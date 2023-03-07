@@ -13,7 +13,7 @@ getImages(images);
 function download_image(ImageId: number, name : string){
   axios({
       method: 'get',
-      url: 'http://localhost:4000/images/'+ ImageId,
+      url: 'http://localhost:8080/images/'+ ImageId,
       responseType: 'blob'
     }).then(response => {
       const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -74,7 +74,7 @@ function submitFile() {
     
     <div class="wrapper-image">
       <div class="img-ctr">
-        <img class="image-container" v-bind:src="'http://localhost:4000/images/' + selectedImageId" alt="image"> 
+        <img class="image-container" v-bind:src="'http://localhost:8080/images/' + selectedImageId" alt="image"> 
       </div>
     </div>
 

@@ -61,9 +61,9 @@ public class ImageController {
   public ResponseEntity<?> addImage(@RequestParam("file") MultipartFile file,
       RedirectAttributes redirectAttributes) throws IOException {
 
-    /*if (!file.getContentType().equals("image/jpg")) {
+    if ((!file.getContentType().equals("image/jpeg")) && (!file.getContentType().equals("images/jpg"))) {
       return new ResponseEntity<>(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
-    }*/
+    }
     if (!file.isEmpty()) {
       byte[] fileContent;
       fileContent = file.getBytes();
