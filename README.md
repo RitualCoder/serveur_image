@@ -7,9 +7,10 @@ Vous aurez besoin de :
 - Vue.js
 - Vite.js
 - Maven (last version)
-- npm (last version), Java 17.
+- npm (last version)
+- Java 17.
 
-Installation des modules le cas d'une machine Ubuntu :
+Installation des modules dans le cas d'une machine Ubuntu :
 
 ```
 # Mettre à jour votre système :
@@ -82,7 +83,7 @@ Si tout s'est bien passé vous pourrez lancer le serveur avec la commande suivan
 
 Rendez-vous sur votre navigateur en tapant l'adresse suivante : 
 
-```https://localhost:8080```
+[https://localhost:8080](url du lien)
 
 Si jamais l'adresse est pas bonne regarder le canal utlisé dans le terminal.
 
