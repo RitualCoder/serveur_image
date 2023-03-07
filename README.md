@@ -1,11 +1,15 @@
 # serveur_image
 
-## Initialization
+## Pré-requis
 
-You need, Node.js, Vue.js, Vite.js, Maven (last version), npm (last version), Java 17.
+Vous aurez besoin de :
+- Node.js
+- Vue.js
+- Vite.js
+- Maven (last version)
+- npm (last version), Java 17.
 
-Dans le cas d'une machine Ubuntu :
-
+Installation des modules le cas d'une machine Ubuntu :
 
 ```
 # Mettre à jour votre système :
